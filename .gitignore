@@ -3,4 +3,8 @@
 
 # Privater Ablageordner
 archive/
-BA_Diversity_Analysis_final.pkl
+
+# Große Datei (nicht auf GitHub!)
+# exclude large data files
+data/BA_Diversity_Analysis_final.pkl
+
