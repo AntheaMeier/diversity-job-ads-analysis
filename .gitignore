@@ -8,3 +8,5 @@ archive/
 # exclude large data files
 data/BA_Diversity_Analysis_final.pkl
 
+.DS_Store
+.ipynb_checkpoints/

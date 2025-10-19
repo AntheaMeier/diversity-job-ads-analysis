@@ -29,48 +29,79 @@ The pipeline provides a reproducible workflow for large-scale text corpora and y
 
 ## Repository Contents
 
-### 🧭 Repository Structure
+### Repository Structure
 
 All project files are organized into two main folders:
 
-- **`data/`** – cleaned and validated datasets used in all analyses:  
-  - `Classi_manuelle_labels_fuer_eval_Bekenntnisse.csv`  
-  - `Classi_manuelle_labels_fuer_evaluation.csv`  
-  - `Classi_manuelle_labels_fuer_evaluationV34.csv`  
-  - `Validierung_Samples_for_comparison_V39.csv`  
-  - `Validierung_Samples_for_manual_labeling_V39.csv`  
-  - *(The large master dataset `BA_Diversity_Analysis_final.pkl` is available via [GitHub Release v1.0](https://github.com/AntheaMeier/diversity-job-ads-analysis/releases/tag/v1.0) and therefore not stored directly in this repository.)*
+- **`data/`** – cleaned, labeled and validated datasets used across all analytical stages.  
+  This folder contains the master dataset and various intermediate and validation files from the classification pipeline.  
+  Key files include:  
+  - `BA_Diversity_Analysis_final.pkl` – final integrated dataset for all analyses  
+  - `Classi_manuelle_labels_fuer_evaluation*.csv` – manually labeled samples for model validation  
+  - `kwb_validation_sample_80rec.csv` – manual sample for rule-based validation  
+  - `batch_requests_V39_*.jsonl` and `batch_results_V39_*.jsonl` – OpenAI Batch API input/output files (LLM classification)  
+  - `v39_validation_comparison_results.csv` – summary metrics comparing LLM and hybrid performance  
+  - *(Note: Due to file size, the master dataset is available via [GitHub Release v1.0](https://github.com/AntheaMeier/diversity-job-ads-analysis/releases/tag/v1.0) and not stored directly in the repository.)*
 
-- **`notebooks/`** – Jupyter notebooks for all analytical parts  
-  (Context-factor analysis, classification pipeline, and final statistical evaluation; see detailed structure below)
+- **`notebooks/`** – structured Jupyter notebooks covering all analytical parts of the study  
+  (Context-factor analysis, hybrid classification, and context–label evaluation; see detailed breakdown below)
 
-### 📒 Jupyter Notebooks (core analyses and classification)
-All notebooks are organized into three structured parts:
+---
 
-#### **A – Analysis of Context Factors**
-Located in `notebooks/A_Analysis_ContextFactors/`  
-Focus: Structural drivers of diversity communication  
+### 📒 Jupyter Notebooks (Core Analyses and Classification)
+
+All notebooks are organized into three main analytical parts that mirror the structure of the thesis.
+
+---
+
+#### **A – Analysis of Context Factors**  
+*Location: `notebooks/A_Analysis_ContextFactors/`*  
+Focus: Identification of structural drivers (e.g., company size, industry, region, qualification level) influencing diversity communication.  
 - `A.1_DataOverview.ipynb` – initial data overview  
-- `A.2_DataCleaning_and_AttributeGeneration.ipynb` – data cleaning & feature creation  
-- `A.3_DescriptiveAnalysis_Qualification_and_ContextFactorIdentification.ipynb` – qualification & factor identification  
-- `A.4_DescriptiveAnalysis_Size_Industry_Region.ipynb` – company size, industry, and region  
-- `A.5_Multivariate_Logit_Models_A_to_E.ipynb` – logistic regression models  
-- `A.6_Random_Forest_Model_A.ipynb` – baseline random-forest model (Google Jobs)  
-- `A.7_Random_Forest_Model_E.ipynb` – optimized random-forest model (BAA data)
+- `A.2_DataCleaning_and_AttributeGeneration.ipynb` – data cleaning and feature generation  
+- `A.3_DescriptiveAnalysis_Qualification_and_ContextFactorIdentification.ipynb` – qualification-level analysis and context-factor identification  
+- `A.4_DescriptiveAnalysis_Size_Industry_Region.ipynb` – descriptive patterns by size, sector, and region  
+- `A.5_Multivariate_Logit_Models_A_to_E.ipynb` – logistic regression models (context effects)  
+- `A.6_Random_Forest_Model_A.ipynb` – baseline Random Forest (Google Jobs subset)  
+- `A.7_Random_Forest_Model_E.ipynb` – optimized Random Forest (BAA full dataset)
 
-#### **B – Label Classification**
-Located in `notebooks/B_Label_Classification/`  
-Focus: Hybrid few-shot + rule-based classification of diversity statements  
-- `AM_div_14–18` – keyword and linguistic pattern analysis  
-- `AM_div_26G` – final evaluation (V39)  
-- `AM_div_27` – validation & batch overview  
-- `AM_div_32–36` – final batch classifications and union datasets
+---
 
-#### **C – Final Analysis of Context–Label Patterns**
-Located in `notebooks/C_Final_Analysis_ContextLabelPattern/`  
-Focus: Linking contextual factors and classified labels  
-- `AM_div_37` – statistical analysis (V39)  
-- `AM_div_38` – screening, confirmation (S1–S3) and reporting
+#### **B – Label Classification (Hybrid LLM + Regex)**  
+*Location: `notebooks/B_Label_Classification/`*  
+Focus: Construction, evaluation, and validation of the hybrid few-shot classification pipeline for diversity-related statements.  
+- **Pre-Analyses:**  
+  - `B.1_Preanalysis_Diversity_Themes_with_KeywordMatching.ipynb` – thematic keyword exploration  
+  - `B.2_Preanalysis_Affective_Linguistic_Patterns_with_Regex.ipynb` – affective and linguistic pattern detection  
+  - `B.3_Preanalysis_Labels_with_Keywords_and_Regex.ipynb` – preliminary label detection and mapping  
+- **Model Evaluation & Sampling:**  
+  - `B.4_Evaluation_V39.ipynb` – LLM classification evaluation (V39)  
+  - `B.5_Sampling_for_Validation_V39.ipynb` – creation of validation samples for LLM evaluation  
+  - `B.6_Validation_V23_V32_V39_and_Batch_Split.ipynb` – comparative evaluation of multiple model versions  
+- **Batch Classification:**  
+  - `B.7_LLM_Classification_Batch_1to3_V39.ipynb`  
+  - `B.8_LLM_Classification_Batch_4to6_V39.ipynb`  
+  - `B.9_LLM_Classification_Batch_7to9_V39.ipynb`  
+  - `B.10_LLM_Classification_Batch_10_V39.ipynb`  
+  - `B.11_LLM_Classification_Final_Merge.ipynb` – integration of all batch outputs (V39)  
+- **Regex & Hybrid Validation:**  
+  - `B.12_Sampling_for_Validation_Regex_Dimensions.ipynb` – sampling for rule-based dimension validation  
+  - `B.13_Regex_Based_Classification_and_Hybrid_Logic.ipynb` – rule-based labeling and hybrid union logic  
+  - `B.14_Graphics_Results_of_Label_Classification.ipynb` – creation of summary tables and visualizations for all labels
+
+---
+
+#### **C – Final Analysis of Context–Label Patterns**  
+*Location: `notebooks/C_Final_Analysis_ContextLabelPattern/`*  
+Focus: Statistical linkage between context factors and classified label patterns (multi-label analysis).  
+- `C.1_Context_Label_Analysis.ipynb` – final quantitative analysis of context–label relationships (Steps S1–S3: screening, confirmation, reporting)
+
+---
+
+### 🗂️ Utility and Meta Files
+- `show_structure.py` – generates a recursive overview of the project directory  
+- `project_structure.txt` – auto-generated text summary of the full repository structure  
+- `README.md` – documentation and project overview
 
 ---
 

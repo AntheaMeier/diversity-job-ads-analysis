@@ -1,0 +1,79 @@
+Projektstruktur:
+
+├── README.md
+├── data
+│   ├── BA_Diversity_Analysis_final.pkl
+│   ├── Classi_manuelle_labels_fuer_eval_Bekenntnisse.csv
+│   ├── Classi_manuelle_labels_fuer_evaluation.csv
+│   ├── Classi_manuelle_labels_fuer_evaluationV34.csv
+│   ├── Classi_texte_zu_klassifizieren.csv
+│   ├── ML_valid_V23.csv
+│   ├── ML_valid_V39.csv
+│   ├── Validierung_Samples_for_comparison_V39.csv
+│   ├── Validierung_Samples_for_manual_labeling_V39.csv
+│   ├── batch_requests_V39_1.jsonl
+│   ├── batch_requests_V39_10.jsonl
+│   ├── batch_requests_V39_2.jsonl
+│   ├── batch_requests_V39_3.jsonl
+│   ├── batch_requests_V39_4.jsonl
+│   ├── batch_requests_V39_5.jsonl
+│   ├── batch_requests_V39_6.jsonl
+│   ├── batch_requests_V39_7.jsonl
+│   ├── batch_requests_V39_8.jsonl
+│   ├── batch_requests_V39_9.jsonl
+│   ├── batch_results_V39_1.jsonl
+│   ├── batch_results_V39_10.jsonl
+│   ├── batch_results_V39_2.jsonl
+│   ├── batch_results_V39_3.jsonl
+│   ├── batch_results_V39_4.jsonl
+│   ├── batch_results_V39_5.jsonl
+│   ├── batch_results_V39_6.jsonl
+│   ├── batch_results_V39_7.jsonl
+│   ├── batch_results_V39_8.jsonl
+│   ├── batch_results_V39_9.jsonl
+│   ├── classification_comparison_results_v23.csv
+│   ├── input_batch_data.csv
+│   ├── input_final_batch_1.csv
+│   ├── input_final_batch_10.csv
+│   ├── input_final_batch_2.csv
+│   ├── input_final_batch_3.csv
+│   ├── input_final_batch_4.csv
+│   ├── input_final_batch_5.csv
+│   ├── input_final_batch_6.csv
+│   ├── input_final_batch_7.csv
+│   ├── input_final_batch_8.csv
+│   ├── input_final_batch_9.csv
+│   ├── kwb_validation_sample_80.csv
+│   ├── kwb_validation_sample_80rec.csv
+│   ├── transformed_results_V39_10.csv
+│   ├── v23_validation_comparison_results.csv
+│   ├── v39_validation_comparison_results.csv
+│   └── validierung_sample.csv
+├── notebooks
+│   ├── A_Analysis_ContextFactors
+│   │   ├── A.1_DataOverview.ipynb
+│   │   ├── A.2_DataCleaning_and_AttributeGeneration.ipynb
+│   │   ├── A.3_DescriptiveAnalysis_Qualification_and_ContextFactorIdentification.ipynb
+│   │   ├── A.4_DescriptiveAnalysis_Size_Industry_Region.ipynb
+│   │   ├── A.5_Multivariate_Logit_Models_A_to_E.ipynb
+│   │   ├── A.6_Random_Forest_Model_A.ipynb
+│   │   └── A.7_Random_Forest_Model_E.ipynb
+│   ├── B_Lable_Classification
+│   │   ├── B.10_LLM_Classification_Batch_10_V39.ipynb
+│   │   ├── B.11_LLM_Classifcation_Final_Merge.ipynb
+│   │   ├── B.12_Sampling_for_Validation_Regex_Dimensions.ipynb
+│   │   ├── B.13_Regex_Based_Classification_and_Hybrid_Logic.ipynb
+│   │   ├── B.14_Graphics_Results_of_Label_Classification.ipynb
+│   │   ├── B.1_Preanalysis_Diversity_Themes_with_KeywordMatching.ipynb
+│   │   ├── B.2_Preanalysis_Affective_Linguistic_Patterns_with_Regex.ipynb
+│   │   ├── B.3_Preanalysis_Labels_with_Keywords_and_Regex.ipynb
+│   │   ├── B.4_Evaluation_V39.ipynb
+│   │   ├── B.5_Sampling_for_Validation_V39.ipynb
+│   │   ├── B.6_Validation_V23_V32_V39_and_Batch_Split.ipynb
+│   │   ├── B.7_LLM_Classification_Batch_1to3_V39.ipynb
+│   │   ├── B.8_LLM_Classification_Batch_4to6_V39.ipynb
+│   │   └── B.9_LLM_Classification_Batch_7to9_V39.ipynb
+│   └── C_Final_Analysis_ContextLablePattern
+│   │   └── C.1_Context_Lable_Analysis.ipynb
+├── project_structure.txt
+└── show_structure.py
