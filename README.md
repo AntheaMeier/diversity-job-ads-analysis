@@ -41,12 +41,34 @@ All project files are organized into two main folders:
   - `kwb_validation_sample_80rec.csv` – manual sample for rule-based validation  
   - `batch_requests_V39_*.jsonl` and `batch_results_V39_*.jsonl` – OpenAI Batch API input/output files (LLM classification)  
   - `v39_validation_comparison_results.csv` – summary metrics comparing LLM and hybrid performance  
-  - *(Note: Due to file size, the master dataset is available via [GitHub Release v1.0](https://github.com/AntheaMeier/diversity-job-ads-analysis/releases/tag/v1.0) and not stored directly in the repository.)*
-
+  
 - **`notebooks/`** – structured Jupyter notebooks covering all analytical parts of the study  
   (Context-factor analysis, hybrid classification, and context–label evaluation; see detailed breakdown below)
 
 ---
+### 📦 Master Dataset (Zenodo, Restricted Access)
+
+The final master dataset (`BA_Diversity_Analysis_final.pkl`, ~1.6 GB) cannot be included directly in this repository due to file size, copyright, and data protection restrictions.
+
+Instead, it is archived on Zenodo and can be accessed upon request:
+
+**DOI:** https://doi.org/10.5281/zenodo.17651771  
+**Access:** Files restricted – access granted upon request
+
+**How to request access:**
+1. Open the DOI link  
+2. Click **“Request access”**  
+3. Access will be manually approved by the author  
+4. Download the file as **`BA_Diversity_Analysis_final.pkl`**
+
+⚠️ **Important for running the notebooks:**  
+The downloaded file must be saved with exactly this filename in the following location:  
+  
+`data/BA_Diversity_Analysis_final.pkl`  
+
+All Jupyter notebooks expect this path and will not run without it.
+
+
 
 ### 📒 Jupyter Notebooks (Core Analyses and Classification)
 
@@ -61,7 +83,8 @@ Focus: Identification of structural drivers (e.g., company size, industry, regio
 - `A.2_DataCleaning_and_AttributeGeneration.ipynb` – data cleaning and feature generation  
 - `A.3_DescriptiveAnalysis_Qualification_and_ContextFactorIdentification.ipynb` – qualification-level analysis and context-factor identification  
 - `A.4_DescriptiveAnalysis_Size_Industry_Region.ipynb` – descriptive patterns by size, sector, and region  
-- `A.5_Multivariate_Logit_Models_A_to_E.ipynb` – logistic regression models (context effects)  
+- `A.5_Multivariate_Logit_Models_A_to_E_Addendum.ipynb` – updated and corrected version of the logistic regression models (Addendum)
+- `A.5_Multivariate_Logit_Models_A_to_E_Legacy.ipynb` – earlier model version: logistic regression models (context effects) 
 - `A.6_Random_Forest_Model_A.ipynb` – baseline Random Forest (Google Jobs subset)  
 - `A.7_Random_Forest_Model_E.ipynb` – optimized Random Forest (BAA full dataset)
 
@@ -113,7 +136,7 @@ Focus: Statistical linkage between context factors and classified label patterns
 2. **Load the master dataset**
    ```python
    import pandas as pd
-   df = pd.read_pickle("BA_Diversity_Analysis_final.pkl")
+  df = pd.read_pickle("data/BA_Diversity_Analysis_final.pkl")
    print(df.shape)
 
 ## Citation
